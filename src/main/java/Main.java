@@ -1,40 +1,5 @@
 import java.util.Scanner;
 
-class Car {
-    private String name;
-    private int speed;
-
-    public Car(String name, int speed) {
-        this.name = name;
-        this.speed = speed;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-}
-
-class Race {
-    private String leaderName = "";
-    private int leaderDistance = 0;
-
-    public void determineNewLeader(Car car) {
-        int distance = 24 * car.getSpeed();
-        if (distance > leaderDistance) {
-            leaderDistance = distance;
-            leaderName = car.getName();
-        }
-    }
-
-    public String getLeaderName() {
-        return leaderName;
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -49,16 +14,16 @@ public class Main {
             }
 
             int speed = -1;
-            while (speed <= 0 || speed > 250) {
+            while (speed < Car.MIN_SPEED || speed > Car.MAX_SPEED) {
                 System.out.println("Введите скорость машины №" + i + ":");
                 while (!scanner.hasNextInt()) {
-                    System.out.println("Неправильный ввод. Введите целое число от 1 до 250.");
+                    System.out.println("Неправильный ввод. Введите целое число от " + Car.MIN_SPEED + " до " + Car.MAX_SPEED + ".");
                     scanner.next();
                 }
                 speed = scanner.nextInt();
                 scanner.nextLine();
-                if (speed <= 0 || speed > 250) {
-                    System.out.println("Неправильная скорость. Скорость должна быть от 1 до 250 км/ч.");
+                if (speed < Car.MIN_SPEED || speed > Car.MAX_SPEED) {
+                    System.out.println("Неправильная скорость. Скорость должна быть от " + Car.MIN_SPEED + " до " + Car.MAX_SPEED + " км/ч.");
                 }
             }
 
