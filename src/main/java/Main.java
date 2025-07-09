@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Car{
+class Car {
     private String name;
     private int speed;
 
@@ -9,11 +9,11 @@ class Car{
         this.speed = speed;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getSpeed(){
+    public int getSpeed() {
         return speed;
     }
 }
@@ -32,7 +32,6 @@ class Race {
 
     public String getLeaderName() {
         return leaderName;
-
     }
 }
 
@@ -50,16 +49,16 @@ public class Main {
             }
 
             int speed = -1;
-            while (speed < 0 || speed > 250) {
+            while (speed <= 0 || speed > 250) {
                 System.out.println("Введите скорость машины №" + i + ":");
                 while (!scanner.hasNextInt()) {
-                    System.out.println("Неправильный ввод. Введите целое число от 0 до 250.");
-                    scanner.next(); // очищаем неправильный ввод
+                    System.out.println("Неправильный ввод. Введите целое число от 1 до 250.");
+                    scanner.next();
                 }
                 speed = scanner.nextInt();
-                scanner.nextLine(); // очищаем буфер после nextInt()
-                if (speed < 0 || speed > 250) {
-                    System.out.println("Неправильная скорость. Скорость должна быть от 0 до 250 км/ч.");
+                scanner.nextLine();
+                if (speed <= 0 || speed > 250) {
+                    System.out.println("Неправильная скорость. Скорость должна быть от 1 до 250 км/ч.");
                 }
             }
 
